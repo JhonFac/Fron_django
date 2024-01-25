@@ -1,0 +1,93 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Page User {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-2">
+  </div>
+
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">Contact us</h4>
+        <p class="card-category">Enter your information and at the end leave us a comment</p>
+      </div>
+      <div class="card-body">
+        <form method="post" action="{% url 'contact_view' %}">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">First Name</label>
+                <input type="text" name="first_name" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Last Name</label>
+                <input type="text" name="last_name" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Address</label>
+                <input type="text" name="address" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Email address</label>
+                <input type="email" name="email" class="form-control" value="{{ current_user.email }}">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">City</label>
+                <input type="text" name="city" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">Country</label>
+                <input type="text" name="country" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">Postal Code</label>
+                <input type="text" name="postal_code" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Leave us a comment</label>
+                <div class="form-group">
+                  <label class="bmd-label-floating">Tell us about our business, what interests you most.</label>
+                  <textarea name="comment" class="form-control" rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary pull-right">Send</button>
+          <div class="clearfix"></div>
+        </form>
+     </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
